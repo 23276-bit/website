@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Underwater hockey players database</title>
+    <link type="text/css" rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <nav class="flex row gap">
+        <a href="/">Home</a>
+        <a href="/players">Players</a>
+        <form class="flex row" action="/search">
+            <input type="text" placeholder="Search" name="query">
+            <input type="submit">
+        </form>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
