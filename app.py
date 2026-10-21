@@ -19,7 +19,6 @@ def create_connection(db_file):
 def query(cmd, args=()):
     con = create_connection(db_name)
     cur = con.cursor()
-
     out = cur.execute(cmd, args)
     res = out.fetchall()
     con.close()

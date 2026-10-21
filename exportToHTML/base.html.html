@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>base.html</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #d5b778;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bababa;}
+.s3 { color: #6aab73;}
+.s4 { color: #bcbec4;}
+.s5 { color: #bcbec4;}
+.s6 { color: #d5b778;}
+</style>
+</head>
+<body bgcolor="#191a1c">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+base.html</font>
+</center></td></tr></table>
+<pre><span class="s0">&lt;!DOCTYPE </span><span class="s2">html</span><span class="s0">&gt;</span>
+<span class="s0">&lt;html </span><span class="s2">lang</span><span class="s3">=&quot;en&quot;</span><span class="s0">&gt;</span>
+<span class="s0">&lt;head&gt;</span>
+    <span class="s0">&lt;meta </span><span class="s2">charset</span><span class="s3">=&quot;UTF-8&quot;</span><span class="s0">&gt;</span>
+    <span class="s0">&lt;title&gt;</span><span class="s1">Underwater hockey players database</span><span class="s0">&lt;/title&gt;</span>
+    <span class="s0">&lt;link </span><span class="s2">type</span><span class="s3">=&quot;text/css&quot; </span><span class="s2">rel</span><span class="s3">=&quot;stylesheet&quot; </span><span class="s2">href</span><span class="s3">=&quot;/static/style.css&quot;</span><span class="s0">&gt;</span>
+<span class="s0">&lt;/head&gt;</span>
+<span class="s0">&lt;body&gt;</span>
+    <span class="s0">&lt;nav </span><span class="s2">class</span><span class="s3">=&quot;flex row gap&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;/&quot;</span><span class="s0">&gt;</span><span class="s1">Home</span><span class="s0">&lt;/a&gt;</span>
+        <span class="s0">&lt;a </span><span class="s2">href</span><span class="s3">=&quot;/players&quot;</span><span class="s0">&gt;</span><span class="s1">Players</span><span class="s0">&lt;/a&gt;</span>
+        <span class="s0">&lt;form </span><span class="s2">class</span><span class="s3">=&quot;flex row&quot; </span><span class="s2">action</span><span class="s3">=&quot;/search&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;text&quot; </span><span class="s2">placeholder</span><span class="s3">=&quot;Search&quot; </span><span class="s2">name</span><span class="s3">=&quot;query&quot;</span><span class="s0">&gt;</span>
+            <span class="s0">&lt;input </span><span class="s2">type</span><span class="s3">=&quot;submit&quot;</span><span class="s0">&gt;</span>
+        <span class="s0">&lt;/form&gt;</span>
+    <span class="s0">&lt;/nav&gt;</span>
+    <span class="s0">&lt;main&gt;</span>
+        <span class="s4">{% </span><span class="s6">block </span><span class="s4">content %}{% </span><span class="s6">endblock </span><span class="s4">%}</span>
+        <span class="s0">&lt;p&gt;</span><span class="s1">Instructions:</span><span class="s0">&lt;p/&gt;</span>
+        <span class="s0">&lt;p&gt;</span><span class="s1">Here, you can see different underwater hockey players on cards and their attributes as well as some facts about them</span><span class="s0">&lt;/p&gt;</span>
+        <span class="s0">&lt;p&gt;</span><span class="s1">These attributes include:</span><span class="s0">&lt;/p&gt;</span>
+        <span class="s0">&lt;p&gt;</span><span class="s1">Name (The name of the player)</span><span class="s0">&lt;/p&gt;</span>
+        <span class="s0">&lt;p&gt;</span><span class="s1">Cap Number (What number they play as)</span><span class="s0">&lt;/p&gt;</span>
+        <span class="s0">&lt;p&gt;</span><span class="s1">Age (How old the player is)</span><span class="s0">&lt;/p&gt;</span>
+        <span class="s0">&lt;p&gt;</span><span class="s1">Position (What position they play)</span><span class="s0">&lt;/p&gt;</span>
+        <span class="s0">&lt;p&gt;</span><span class="s1">Stick (What model stick they play with)</span><span class="s0">&lt;/p&gt;</span>
+        <span class="s0">&lt;p&gt;</span><span class="s1">Ghost (Whether the stick is ghost or not (has holes))</span><span class="s0">&lt;/p&gt;</span>
+        <span class="s0">&lt;p&gt;</span><span class="s1">Stick Type (What type of stick it is e.g. soft)</span><span class="s0">&lt;/p&gt;</span>
+        <span class="s0">&lt;p&gt;</span><span class="s1">Club (What club the player plays for)</span><span class="s0">&lt;/p&gt;</span>
+    <span class="s0">&lt;/main&gt;</span>
+<span class="s0">&lt;/body&gt;</span>
+<span class="s0">&lt;/html&gt;</span></pre>
+</body>
+</html>

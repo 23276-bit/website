@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>app.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+.s4 { color: #7a7e85;}
+.s5 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#191a1c">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+app.py</font>
+</center></td></tr></table>
+<pre><span class="s0">from </span><span class="s1">click </span><span class="s0">import </span><span class="s1">Tuple</span>
+<span class="s0">from </span><span class="s1">flask </span><span class="s0">import </span><span class="s1">Flask</span><span class="s2">, </span><span class="s1">render_template</span><span class="s2">, </span><span class="s1">request</span>
+<span class="s0">import </span><span class="s1">sqlite3</span>
+<span class="s0">from </span><span class="s1">sqlite3 </span><span class="s0">import </span><span class="s1">Error</span>
+
+<span class="s1">app </span><span class="s2">= </span><span class="s1">Flask</span><span class="s2">(</span><span class="s1">__name__</span><span class="s2">)</span>
+<span class="s1">db_name </span><span class="s2">= </span><span class="s3">&quot;identifier.sqlite&quot;</span>
+
+
+<span class="s0">def </span><span class="s1">create_connection</span><span class="s2">(</span><span class="s1">db_file</span><span class="s2">):</span>
+    <span class="s1">connection</span><span class="s2">=</span><span class="s0">None</span>
+    <span class="s0">try</span><span class="s2">:</span>
+        <span class="s1">connection </span><span class="s2">= </span><span class="s1">sqlite3</span><span class="s2">.</span><span class="s1">connect</span><span class="s2">(</span><span class="s1">db_file</span><span class="s2">)</span>
+        <span class="s0">return </span><span class="s1">connection</span>
+    <span class="s0">except </span><span class="s1">Error </span><span class="s0">as </span><span class="s1">e</span><span class="s2">:</span>
+        <span class="s1">print</span><span class="s2">(</span><span class="s1">e</span><span class="s2">)</span>
+        <span class="s0">return </span><span class="s1">connection</span>
+
+<span class="s0">def </span><span class="s1">query</span><span class="s2">(</span><span class="s1">cmd</span><span class="s2">, </span><span class="s1">args</span><span class="s2">=()):</span>
+    <span class="s1">con </span><span class="s2">= </span><span class="s1">create_connection</span><span class="s2">(</span><span class="s1">db_name</span><span class="s2">)</span>
+    <span class="s1">cur </span><span class="s2">= </span><span class="s1">con</span><span class="s2">.</span><span class="s1">cursor</span><span class="s2">()</span>
+    <span class="s1">out </span><span class="s2">= </span><span class="s1">cur</span><span class="s2">.</span><span class="s1">execute</span><span class="s2">(</span><span class="s1">cmd</span><span class="s2">, </span><span class="s1">args</span><span class="s2">)</span>
+    <span class="s1">res </span><span class="s2">= </span><span class="s1">out</span><span class="s2">.</span><span class="s1">fetchall</span><span class="s2">()</span>
+    <span class="s1">con</span><span class="s2">.</span><span class="s1">close</span><span class="s2">()</span>
+
+    <span class="s0">return </span><span class="s1">res</span>
+<span class="s2">@</span><span class="s1">app</span><span class="s2">.</span><span class="s1">route</span><span class="s2">(</span><span class="s3">'/'</span><span class="s2">)</span>
+<span class="s0">def </span><span class="s1">index</span><span class="s2">():  </span><span class="s4"># put application's code here</span>
+    <span class="s0">return </span><span class="s1">render_template</span><span class="s2">(</span><span class="s3">'index.html'</span><span class="s2">)</span>
+
+
+<span class="s2">@</span><span class="s1">app</span><span class="s2">.</span><span class="s1">route</span><span class="s2">(</span><span class="s3">'/players'</span><span class="s2">)</span>
+<span class="s0">def </span><span class="s1">players</span><span class="s2">():</span>
+    <span class="s1">player_list </span><span class="s2">= </span><span class="s1">query</span><span class="s2">(</span><span class="s3">&quot;SELECT * from uwhplayers&quot;</span><span class="s2">)</span>
+    <span class="s0">return </span><span class="s1">render_template</span><span class="s2">(</span><span class="s3">'players.html'</span><span class="s2">, </span><span class="s1">player</span><span class="s2">=</span><span class="s1">player_list</span><span class="s2">)</span>
+
+
+<span class="s2">@</span><span class="s1">app</span><span class="s2">.</span><span class="s1">route</span><span class="s2">(</span><span class="s3">'/search'</span><span class="s2">)</span>
+<span class="s0">def </span><span class="s1">search</span><span class="s2">():</span>
+    <span class="s1">search_query </span><span class="s2">= </span><span class="s1">request</span><span class="s2">.</span><span class="s1">args</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s3">'query'</span><span class="s2">)</span>
+    <span class="s1">players </span><span class="s2">= </span><span class="s1">query</span><span class="s2">(</span><span class="s3">'SELECT * FROM uwhplayers WHERE Name LIKE ? OR Cap_Number LIKE ? OR Age LIKE ? OR Position LIKE ? OR Stick LIKE ? OR Ghost LIKE ? OR Stick_Type LIKE ? OR Club'</span><span class="s2">, (</span><span class="s3">f'%</span><span class="s0">{</span><span class="s1">search_query</span><span class="s0">}</span><span class="s3">%'</span><span class="s2">,) * </span><span class="s5">7</span><span class="s2">)</span>
+    <span class="s0">return </span><span class="s1">render_template</span><span class="s2">(</span><span class="s3">'players.html'</span><span class="s2">, </span><span class="s1">player</span><span class="s2">=</span><span class="s1">players</span><span class="s2">)</span>
+
+
+<span class="s0">if </span><span class="s1">__name__ </span><span class="s2">== </span><span class="s3">'__main__'</span><span class="s2">:</span>
+    <span class="s1">app</span><span class="s2">.</span><span class="s1">run</span><span class="s2">()</span>
+</pre>
+</body>
+</html>

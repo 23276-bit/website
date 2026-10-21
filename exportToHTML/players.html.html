@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>players.html</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #bcbec4;}
+.s1 { color: #bcbec4;}
+.s2 { color: #d5b778;}
+.s3 { color: #6aab73;}
+.s4 { color: #bcbec4;}
+.s5 { color: #d5b778;}
+.s6 { color: #bababa;}
+.s7 { color: #6aab73;}
+.s8 { color: #cf8e6d;}
+.s9 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#191a1c">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+players.html</font>
+</center></td></tr></table>
+<pre><span class="s0">{% </span><span class="s2">extends </span><span class="s3">&quot;base.html&quot; </span><span class="s0">%}</span>
+
+<span class="s0">{% </span><span class="s2">block </span><span class="s0">content %}</span>
+    <span class="s5">&lt;div </span><span class="s6">class</span><span class="s7">=&quot;players&quot;</span><span class="s5">&gt;</span>
+        <span class="s0">{% </span><span class="s2">for </span><span class="s0">player </span><span class="s8">in </span><span class="s0">player %}</span>
+            <span class="s5">&lt;div </span><span class="s6">class</span><span class="s7">=&quot;player&quot;</span><span class="s5">&gt;</span>
+                <span class="s5">&lt;div&gt;</span>
+
+                <span class="s5">&lt;/div&gt;</span>
+                <span class="s5">&lt;div </span><span class="s6">class</span><span class="s7">=&quot;player-text&quot;</span><span class="s5">&gt;</span>
+                    <span class="s5">&lt;span&gt;</span><span class="s4">Name: </span><span class="s1">{{ </span><span class="s0">player</span><span class="s1">[</span><span class="s9">1</span><span class="s1">] }}</span><span class="s5">&lt;/span&gt;</span>
+                    <span class="s5">&lt;span&gt;</span><span class="s4">Cap_Number: </span><span class="s1">{{ </span><span class="s0">player</span><span class="s1">[</span><span class="s9">2</span><span class="s1">] }}</span><span class="s5">&lt;/span&gt;</span>
+                    <span class="s5">&lt;span&gt;</span><span class="s4">Age: </span><span class="s1">{{ </span><span class="s0">player</span><span class="s1">[</span><span class="s9">3</span><span class="s1">] }}</span><span class="s5">&lt;/span&gt;</span>
+                    <span class="s5">&lt;span&gt;</span><span class="s4">Position: </span><span class="s1">{{ </span><span class="s0">player</span><span class="s1">[</span><span class="s9">4</span><span class="s1">] }}</span><span class="s5">&lt;/span&gt;</span>
+                    <span class="s5">&lt;span&gt;</span><span class="s4">Stick: </span><span class="s1">{{ </span><span class="s0">player</span><span class="s1">[</span><span class="s9">5</span><span class="s1">] }}</span><span class="s5">&lt;/span&gt;</span>
+                    <span class="s5">&lt;span&gt;</span><span class="s4">Ghost: </span><span class="s1">{{ </span><span class="s0">player</span><span class="s1">[</span><span class="s9">6</span><span class="s1">] }}</span><span class="s5">&lt;/span&gt;</span>
+                    <span class="s5">&lt;span&gt;</span><span class="s4">Stick_Type: </span><span class="s1">{{ </span><span class="s0">player</span><span class="s1">[</span><span class="s9">7</span><span class="s1">] }}</span><span class="s5">&lt;/span&gt;</span>
+                    <span class="s5">&lt;span&gt;</span><span class="s4">Club: </span><span class="s1">{{ </span><span class="s0">player</span><span class="s1">[</span><span class="s9">8</span><span class="s1">] }}</span><span class="s5">&lt;/span&gt;</span>
+                <span class="s5">&lt;/div&gt;</span>
+            <span class="s5">&lt;/div&gt;</span>
+        <span class="s0">{% </span><span class="s2">endfor </span><span class="s0">%}</span>
+    <span class="s5">&lt;/div&gt;</span>
+<span class="s0">{% </span><span class="s2">endblock </span><span class="s0">%}</span></pre>
+</body>
+</html>
